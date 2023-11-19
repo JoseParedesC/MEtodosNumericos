@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metodos App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./Styles/styles.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Metodos Numericos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="nav nav-tabs navbar-nav flex-grow-1 pe-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" data-type="trapezoidal" data-id="a_metod_tp" data-h1="Metodo Trapezoidal" data-btn="btn-trapezoidal" role="data"
+                                data-ref="#DropDownSquare">Metodo Trapezoidal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-type="boole" data-id="a_metod_jb" data-h1="Jorge Boole" data-btn="btn-boole" role="data"
+                                data-ref="#DropDownSquare">Jorge Boole</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Teorema Simpson</a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li>
+                                    <a class="dropdown-item" data-type="simpson38" role="data" data-h1="Teorema Simpson 3/8" data-btn="btn-simp38" data-id="a_ts38"
+                                        data-ref="#DropDownSquare">T.S. 3/8</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" data-type="simpson13" role="data" data-h1="Teorema Simpson. 1/3" data-btn="btn-simp13" data-id="a_ts13"
+                                        data-ref="#DropDownSquare">T.S. 1/3</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" data-type="simpabierto" role="data" data-h1="Teorema Simpson Abierto" data-btn="btn-simpAbierto"
+                                        data-id="a_tsab" data-ref="#DropDownSquare">Abierto</a>
+                                </li>
+                                <!-- <li><hr class="dropdown-divider" /></li> -->
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="card funciones">
+        <div class="row">
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="true"  data-met="Log">Log</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="true"  data-met="Ln">Ln</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="true" data-met="sqr">√</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="true"  data-met="sin">sin</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="true"  data-met="cos">cos</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="true"  data-met="tan">tan</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="false"  data-met="plus">+</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="false"  data-met="min">-</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="false"  data-met="mul">x</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="false"  data-met="div">/</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="true"  data-met="(">(</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-primary func btn3d" data-special="true"  data-met=")">)</button>
+            </div>
+            <div class="col-lg-1">
+                <label for="checkbox" class="container">
+                    <input class="checkbox" id="checkbox" type="checkbox" />
+                      <div class="background"></div>
+                    <div class="circle"></div>
+                  </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show" id="DropDownSquare" role="tabpanel" aria-labelledby="dash-tab">
+            <div class="card centerbox">
+                <div class="card-header row col-lg-12">
+                    <div class="col-lg-11">
+                        <h1>----</h1>
+                    </div>
+                    <div class="col-lg-1 pull-right">
+                        <button class="btn btn-danger" onclick="closeCard()"><strong>X</strong></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-lg-1 boole trapezoidal simpson13 simpson38 simpabierto">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-auto">
+                                <strong><label for="bot" class="col-form-label">a =</label></strong>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="number" name="a" id="bot" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 boole trapezoidal simpson13 simpson38 simpabierto">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-auto">
+                              <strong><label for="top" class="col-form-label">b =</label></strong>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="number" name="b" id="top" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 trapezoidal simpabierto" id="show_cant_iteraciones">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-auto">
+                              <strong><label for="cant_iteraciones" class="col-form-label">n =</label></strong>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="number" name="cant_iteraciones" id="cant_iteraciones" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 boole trapezoidal simpson13 simpson38 simpabierto">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-auto">
+                              <strong><label for="delta" class="col-form-label">Δ =</label></strong>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="number" name="b" id="delta" class="form-control" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-lg-12">
+                        <textarea name="cuadroTexto" cols="165" rows="10" id="dataTextArea"></textarea>
+                        <!-- <input type="text" name="dataTextArea" id="dataTextArea" class="form-control" disabled /> -->
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="pull-right col-lg-12">
+                        <button class="btn btn-success" id="">Sumbit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script src="./Functions/functions.js"></script>
+<script src="./Functions/Trapezoidal.js"></script>
+<script src="./Functions/Boole.js"></script>
+<script src="./Functions/Simpson13.js"></script>
+<script src="./Functions/Simpson38.js"></script>
+<script src="./Functions/SimpsonAbierta.js"></script>
+
+</html>
