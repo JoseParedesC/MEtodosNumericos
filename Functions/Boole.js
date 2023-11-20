@@ -30,8 +30,8 @@ function CalcularPorJorgeBoole(){
 
         control = 0
 
-        inc_elevado =  Math.pow(x[i], (data_elevado["isElevado"] ? (data_elevado["incognita"] ? parseInt(data_elevado["valor"]) : 1) : 1))
-        con_elevado =  Math.pow(complemento_operacion, parseFloat(data_elevado["isElevado"] ? (data_elevado["constante"] ? parseInt(data_elevado["valor"]) : 1) : 1))
+        inc_elevado =  Math.pow(x[i], (data_elevado["isElevado"] ? (data_elevado["caracter"] == "incognita" ? parseInt(data_elevado["valor"]) : 1) : 1))
+        con_elevado =  Math.pow(complemento_operacion, parseFloat(data_elevado["isElevado"] ? (data_elevado["caracter"] == "constante" ? parseInt(data_elevado["valor"]) : 1) : 1))
 
         switch(valor_operando){
             case "+":

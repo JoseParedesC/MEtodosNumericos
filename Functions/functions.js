@@ -162,14 +162,16 @@ function MathOperator(value){
 
 $('#dataTextArea').on('keydown', function(ev){
 
-    //define el valor constante
+    last_character = $('#dataTextArea').val().split('')
+    carac_anterior = last_character[last_character.length-1]
+
+    //define el valor constante o exponente
     if(!isNaN(ev.originalEvent.key)){
         
         if(carac_anterior == "^"){
             data_elevado.valor = ev.originalEvent.key
         }else{
             valor_numerico += ev.originalEvent.key
-            carac_anterior = "constante"
 
             $('#top,#bot,#cant_iteraciones').change()
         }
@@ -178,7 +180,6 @@ $('#dataTextArea').on('keydown', function(ev){
     //define la incognita
     if(isNaN(ev.originalEvent.key) && !IsOperando(ev.originalEvent.key)){
         valor_incognita = "x"
-        carac_anterior = "incognita"
     }
 
     //define el valor del operando
@@ -189,7 +190,10 @@ $('#dataTextArea').on('keydown', function(ev){
     //define si esta elevado
     if(isNaN(ev.originalEvent.key) && ev.originalEvent.key == "^"){
         data_elevado.isElevado = true
-        data_elevado.caracter = carac_anterior
+        if(isNaN(carac_anterior))
+            data_elevado.caracter = 'incognita'
+        else
+            data_elevado.caracter = 'constante'
     }
 })
 
