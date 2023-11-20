@@ -82,6 +82,15 @@
                 <button class="btn btn-primary func btn3d" data-special="true"  data-met="tan">tan</button>
             </div>
             <div class="col-lg-1">
+                <label for="checkbox" class="container">
+                    <input class="checkbox" id="checkbox" type="checkbox" />
+                      <div class="background"></div>
+                    <div class="circle"></div>
+                  </label>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-lg-1">
                 <button class="btn btn-primary func btn3d" data-special="false"  data-met="plus">+</button>
             </div>
             <div class="col-lg-1">
@@ -99,79 +108,107 @@
             <div class="col-lg-1">
                 <button class="btn btn-primary func btn3d" data-special="true"  data-met=")">)</button>
             </div>
-            <div class="col-lg-1">
-                <label for="checkbox" class="container">
-                    <input class="checkbox" id="checkbox" type="checkbox" />
-                      <div class="background"></div>
-                    <div class="circle"></div>
-                  </label>
-            </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show" id="DropDownSquare" role="tabpanel" aria-labelledby="dash-tab">
             <div class="card centerbox">
                 <div class="card-header row col-lg-12">
-                    <div class="col-lg-11">
+                    <div class="col-lg-10">
                         <h1>----</h1>
                     </div>
+                    <div class="pull-right col-lg-1">
+                        <button class="btn btn-success" id="">Sumbit</button>
+                    </div>
                     <div class="col-lg-1 pull-right">
-                        <button class="btn btn-danger" onclick="closeCard()"><strong>X</strong></button>
+                        <button class="btn btn-danger" onclick="CloseCard()"><strong>X</strong></button>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                    <div class="col-lg-1 boole trapezoidal simpson13 simpson38 simpabierto">
-                        <div class="row g-2 align-items-center">
-                            <div class="col-auto">
-                                <strong><label for="bot" class="col-form-label">a =</label></strong>
+                        <div class="col-lg-1 boole trapezoidal simpson13 simpson38 simpabierto">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                    <strong><label for="bot" class="col-form-label">a =</label></strong>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="number" name="a" id="bot" class="form-control">
+                                </div>
                             </div>
-                            <div class="col-lg-7">
-                                <input type="number" name="a" id="bot" class="form-control">
+                        </div>
+                        <div class="col-lg-1 boole trapezoidal simpson13 simpson38 simpabierto">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                <strong><label for="top" class="col-form-label">b =</label></strong>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="number" name="b" id="top" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 trapezoidal simpabierto" id="show_cant_iteraciones">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                <strong><label for="cant_iteraciones" class="col-form-label">n =</label></strong>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="number" name="cant_iteraciones" id="cant_iteraciones" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 boole trapezoidal simpson13 simpson38 simpabierto">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                <strong><label for="delta" class="col-form-label">Δ =</label></strong>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="number" name="b" id="delta" class="form-control" disabled />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1 boole trapezoidal simpson13 simpson38 simpabierto">
-                        <div class="row g-2 align-items-center">
-                            <div class="col-auto">
-                              <strong><label for="top" class="col-form-label">b =</label></strong>
-                            </div>
-                            <div class="col-lg-7">
-                                <input type="number" name="b" id="top" class="form-control">
+                    
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                    <strong><label for="dataTextArea" id="label_dataTextArea_o"></label></strong>
+                                </div>
+                                <div class="col-lg-7">
+                                    <!-- <textarea name="cuadroTexto" cols="165" rows="10" id="dataTextArea"></textarea> -->
+                                    <input type="text" name="dataTextArea" id="dataTextArea" class="form-control" />
+                                </div>
+                                <div class="col-auto">
+                                    <strong><label for="dataTextArea" id="label_dataTextArea_c"></label></strong>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                    <strong><label for="resultTextArea" class="col-form-label">=></label></strong>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="number" name="resultTextArea" id="resultTextArea" class="form-control" disabled>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-1 trapezoidal simpabierto" id="show_cant_iteraciones">
-                        <div class="row g-2 align-items-center">
-                            <div class="col-auto">
-                              <strong><label for="cant_iteraciones" class="col-form-label">n =</label></strong>
-                            </div>
-                            <div class="col-lg-7">
-                                <input type="number" name="cant_iteraciones" id="cant_iteraciones" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 boole trapezoidal simpson13 simpson38 simpabierto">
-                        <div class="row g-2 align-items-center">
-                            <div class="col-auto">
-                              <strong><label for="delta" class="col-form-label">Δ =</label></strong>
-                            </div>
-                            <div class="col-lg-7">
-                                <input type="number" name="b" id="delta" class="form-control" disabled />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="col-lg-12">
-                        <textarea name="cuadroTexto" cols="165" rows="10" id="dataTextArea"></textarea>
-                        <!-- <input type="text" name="dataTextArea" id="dataTextArea" class="form-control" disabled /> -->
                     </div>
                 </div>
                 <div class="card-footer">
-                    <div class="pull-right col-lg-12">
-                        <button class="btn btn-success" id="">Sumbit</button>
-                    </div>
+                    <table class="table" id="TableResult">
+                        <thead>
+                          <tr>
+                            <th scope="col">X</th>
+                            <th scope="col">Formula</th>
+                            <th scope="col">Ecuacion</th>
+                            <th scope="col">Control</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
                 </div>
             </div>
         </div>

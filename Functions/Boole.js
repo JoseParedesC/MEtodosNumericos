@@ -1,7 +1,7 @@
 function delta_B() {
     a = parseInt($('#bot').val())
     b = parseInt($('#top').val())
-    div = 4
+    div = parseInt(valor_numerico)
 
     val = (b-a)/4
 
@@ -13,10 +13,9 @@ function CalcularPorJorgeBoole(){
     const _func = $('#dataTextArea').val()
     var x = [0]
     var _x = []
+    var complemento_operacion = parseInt(valor_numerico)
 
     var suma_control = 0
-
-    iteraciones = data_iteraciones.boole
 
     iteraciones.forEach(element => {
         x.push(x[x.length-1] + _delta)
@@ -27,15 +26,47 @@ function CalcularPorJorgeBoole(){
     //     return
     // }
 
-
     for(i = 0; i < iteraciones.length; i++){
-        control = iteraciones[i] * MathOperator(x[i]+4)
+
+        control = 0
+
+        inc_elevado =  Math.pow(x[i], (data_elevado["isElevado"] ? (data_elevado["incognita"] ? parseInt(data_elevado["valor"]) : 1) : 1))
+        con_elevado =  Math.pow(complemento_operacion, parseFloat(data_elevado["isElevado"] ? (data_elevado["constante"] ? parseInt(data_elevado["valor"]) : 1) : 1))
+
+        switch(valor_operando){
+            case "+":
+                control = iteraciones[i] * MathOperator(inc_elevado + con_elevado)
+            break
+
+            case "-":
+                control = iteraciones[i] * MathOperator(inc_elevado - con_elevado)
+            break
+
+            case "*":
+                control = iteraciones[i] * MathOperator(inc_elevado * con_elevado)
+            break
+
+            case "/":
+                control = iteraciones[i] * MathOperator(inc_elevado / con_elevado)
+            break
+        }
+
         suma_control += control
         _x.push(control)
-    }
+
+        tr_tbody = $('<tr />')
+        tr_tbody.append(`<th scope="row">${x[i]}</th><td>${$('.func.selected').text()}(${$('#dataTextArea').val()})</td><td>${iteraciones[i]} * ${$('.func.selected').text()}(${inc_elevado} ${valor_operando} ${con_elevado})</td><td>${control}</td>`)
+        $('#TableResult tbody').append(tr_tbody)
+
+    }   
+
+    tr_tbody = $('<tr />')
+    tr_tbody.append(`<th scope="row">Σ</th><td></td><td></td><td><strong>${suma_control}</strong></td>`)
+    $('#TableResult tbody').append(tr_tbody)
+
 
     var result = ((2*_delta)/45)*suma_control
 
-    $('#dataTextArea').val(result)
+    $('#resultTextArea').val(result)
 
 }

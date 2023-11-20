@@ -1,3 +1,9 @@
+valor_numerico = ""
+valor_incognita = ""
+valor_operando = ""
+data_elevado = {isElevado : false, caracter: "", valor : 0}
+carac_anterior = ""
+
 $(document).ready(function(){
     $('#show_cant_iteraciones').hide()
 
@@ -5,7 +11,8 @@ $(document).ready(function(){
 })
 
 $('a[role="data"]').on('click', function(){
-    closeCard
+    CloseCard
+    CleanFormCard()
 
     $('div.trapezoidal,div.boole,div.simpson38,div.simpson13,div.simpabierto').hide()
 
@@ -21,9 +28,18 @@ $('a[role="data"]').on('click', function(){
 })
 
 
-const closeCard = ()  => (
+const CloseCard = ()  => (
     $('.tab-pane').hide()
 )
+
+
+function CleanFormCard(){
+    $('input').val('')
+    $('.func').removeClass('selected').addClass('btn3d')
+    $('#label_dataTextArea_o').text('')
+    $('#label_dataTextArea_c').text('')
+    $('#TableResult tbody').html('')
+}
 
 
 $('.func').on('click', function(){
@@ -31,12 +47,21 @@ $('.func').on('click', function(){
     data_special_o = $(this).attr('data-special') == "true" ? '(' : ' '
     data_special_c = $(this).attr('data-special') == "true" ? ')' : ''
 
-    $('#dataTextArea').val($(this).text() + data_special_o + data_special_c)
+    // $('#dataTextArea').val($(this).text() + data_special_o + data_special_c)
+
+    $('#label_dataTextArea_o').text($(this).text() + data_special_o)
+    $('#label_dataTextArea_c').text(data_special_c)
     
     $('.func').addClass('btn3d')
 
     $(this).toggleClass('btn3d')
     $(this).toggleClass('selected')
+
+    valor_numerico = ""
+    valor_incognita = ""
+    valor_operando = ""
+    data_elevado = {isElevado : false, caracter: "", valor : 0}
+    carac_anterior = ""
 
 })
 
@@ -135,6 +160,51 @@ function MathOperator(value){
     return result
 } 
 
+$('#dataTextArea').on('keydown', function(ev){
+
+    //define el valor constante
+    if(!isNaN(ev.originalEvent.key)){
+        
+        if(carac_anterior == "^"){
+            data_elevado.valor = ev.originalEvent.key
+        }else{
+            valor_numerico += ev.originalEvent.key
+            carac_anterior = "constante"
+
+            $('#top,#bot,#cant_iteraciones').change()
+        }
+    }
+
+    //define la incognita
+    if(isNaN(ev.originalEvent.key) && !IsOperando(ev.originalEvent.key)){
+        valor_incognita = "x"
+        carac_anterior = "incognita"
+    }
+
+    //define el valor del operando
+    if(isNaN(ev.originalEvent.key) && IsOperando(ev.originalEvent.key)){
+        valor_operando = ev.originalEvent.key
+    }
+
+    //define si esta elevado
+    if(isNaN(ev.originalEvent.key) && ev.originalEvent.key == "^"){
+        data_elevado.isElevado = true
+        data_elevado.caracter = carac_anterior
+    }
+})
+
+function IsOperando(str){
+
+    isOperando = false
+
+    array_operadores.forEach(elem => {
+        if(elem == str){
+            isOperando = true
+        }
+    })
+
+    return isOperando
+}
 
 
 $('#checkbox').on('click', function(){
@@ -148,6 +218,8 @@ $('#cant_iteraciones').change(function(){
         $(this).val(0)
     }
 })
+
+var array_operadores = ["+", "-", "*", "/"]
 
 data_iteraciones = {
     "boole":[7, 32, 12, 32, 7],
